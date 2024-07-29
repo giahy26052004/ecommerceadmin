@@ -1,4 +1,3 @@
-
 import clientPromise from "@/lib/mongodb";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth, { getServerSession } from "next-auth";
@@ -16,6 +15,11 @@ const authOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   adapter: MongoDBAdapter(clientPromise),
+  authorization: {
+    params: {
+      redirect_uri: process.env.REDIRECT_URI,
+    },
+  },
   callbacks: {
     session: ({ session, token, user }) => {
       // if (addminEmail.includes(session?.user?.email)) return session;
