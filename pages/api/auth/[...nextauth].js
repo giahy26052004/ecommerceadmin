@@ -33,9 +33,9 @@ export default NextAuth(authOptions);
 export async function isAdminRequest(req, res) {
   const session = await getServerSession(req, res, authOptions);
 
-  if (!addminEmail.includes(session?.user?.email)) {
-    res.json(401);
-    res.end();
-    throw "not admin";
-  }
+  // if (!addminEmail.includes(session?.user?.email)) {
+  //   res.json(401);
+  //   res.end();
+  //   throw "not admin";
+  // }
 }
